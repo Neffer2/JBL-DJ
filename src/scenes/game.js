@@ -76,6 +76,63 @@ export class Game extends Phaser.Scene {
         square8.on('pointerdown', () => {   
             this.sound.play('hihat2');
         });
+
+        let song = this.sound.add('song1');
+        song.play({
+            loop: true
+        });
+
+        let detune = this.add.image(100, 50, 'detune').setScale(0.5).setInteractive();
+        this.plugins.get('rexdragrotateplugin').add(this, {
+            origin: detune,
+            x: 0,
+            y: 0,
+            maxRadius: 30,
+            minRadius: 0,
+            // enable: true,
+        })
+        .on('drag', function (dragRotate) {
+            detune.angle += dragRotate.deltaAngle;
+            if (song.isPlaying){
+                let newDetune = song.detune + dragRotate.deltaAngle * 10;
+                song.detune = Phaser.Math.Clamp(newDetune, -1200, 1200);
+                
+                // Sincronizar la rotación visual con el valor del detune
+                // Mapear el rango de detune (-1200 a 1200) a rotación (-180° a 180°)
+                detune.rotation = (song.detune / 1200) * Math.PI;
+            }
+            // let color = (dragRotate.isRadiusChanged) ? 0x00ff00 : 0xffff00;
+        })
+        .on('dragend', function () {
+            
+        });
+
+        let rate = this.add.image(200, 50, 'detune').setScale(0.5).setInteractive();
+        this.plugins.get('rexdragrotateplugin').add(this, {
+            origin: rate,
+            x: 0,
+            y: 0,
+            maxRadius: 30,
+            minRadius: 0,
+            // enable: true,
+        })
+        .on('drag', function (dragRotate) {
+            rate.angle += dragRotate.deltaAngle;
+            // let color = (dragRotate.isRadiusChanged) ? 0x00ff00 : 0xffff00;
+            if (song.isPlaying){
+                let newRate = song.rate + dragRotate.deltaAngle * 0.01;
+                song.rate = Phaser.Math.Clamp(newRate, 0.5, 2);
+                
+                // Sincronizar la rotación visual con el valor del rate
+                // Mapear el rango de rate (0.5 a 2) a rotación (-90° a 90°)
+                // Normalizar: (rate - 1.25) / 0.75 da un rango de -1 a 1
+                // Luego multiplicar por π/2 para obtener -90° a 90°
+                rate.rotation = ((song.rate - 1.25) / 0.75) * (Math.PI / 2);
+            }
+        })
+        .on('dragend', function () {
+            
+        });
     }
 
     init(){

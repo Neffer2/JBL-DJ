@@ -19,7 +19,16 @@ export class Preloader extends Phaser.Scene {
         this.load.audio('snare1', ['samples/Snare1.wav']);
         this.load.audio('snare2', ['samples/Snare2.wav']);
         this.load.audio('scrath', ['samples/Scrath.wav']);
-    }
+
+        // SONGS
+        this.load.audio('song1', ['songs/Lensko - Circles.mp3']);
+
+        // OBJECTS
+        this.load.image('detune', 'characters/enemy_1.png');
+
+        // PLUGINS
+        this.load.plugin('rexdragrotateplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexdragrotateplugin.min.js', true);
+    } 
 
     create ()
     {
