@@ -1,0 +1,28 @@
+export class Preloader extends Phaser.Scene {
+    constructor ()
+    {
+        super('Preloader');
+    }
+
+    preload ()
+    { 
+        this.load.setPath('public/assets');
+        
+
+        // Samples
+        this.load.audio('hihat1', ['samples/Hihat1.wav']);
+        this.load.audio('hihat2', ['samples/Hihat2.wav']);
+        this.load.audio('kick1', ['samples/Kick1.wav']);
+        this.load.audio('kick2', ['samples/Kick2.wav']);
+        this.load.audio('kick3', ['samples/Kick3.wav']);
+        this.load.audio('kick4', ['samples/Kick4.wav']);
+        this.load.audio('snare1', ['samples/Snare1.wav']);
+        this.load.audio('snare2', ['samples/Snare2.wav']);
+        this.load.audio('scrath', ['samples/Scrath.wav']);
+    }
+
+    create ()
+    {
+        this.scene.start('Game');
+    } 
+}
