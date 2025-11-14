@@ -57,12 +57,13 @@ export class Game extends Phaser.Scene {
             this.sound.play('hihat2');
         });
 
-        let song = this.sound.add('song1');
+        let song = this.sound.add(`song${this.generateRandomInt(1,3)}`);
         song.on('play', () => {
             sine.anims.play('sine_anim');
         });
         song.play({
-            loop: true
+            loop: true,
+            volume: 0.8
         });
 
         let sample_btn9 = this.add.image(sample_btn7.x + 428, 440, 'scrath_btn').setInteractive();
@@ -160,4 +161,8 @@ export class Game extends Phaser.Scene {
     update(){
 
     }
+
+    generateRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }   
 }

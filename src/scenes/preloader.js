@@ -30,6 +30,8 @@ export class Preloader extends Phaser.Scene {
 
         // SONGS
         this.load.audio('song1', ['songs/Lensko - Circles.mp3']);
+        this.load.audio('song2', ['songs/house.mp3']);
+        this.load.audio('song3', ['songs/teamo.mp3']);
 
         // OBJECTS
         this.load.image('spin_volume', 'objects/detune.png');
