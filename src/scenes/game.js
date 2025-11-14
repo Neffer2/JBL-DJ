@@ -27,34 +27,66 @@ export class Game extends Phaser.Scene {
 
         sample_btn1.on('pointerdown', () => {
             this.sound.play('kick1');
+            sample_btn1.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn1.setScale(1);
+            });
         });
 
         sample_btn2.on('pointerdown', () => {
             this.sound.play('kick2');
+            sample_btn2.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn2.setScale(1);
+            });
         });
 
         sample_btn3.on('pointerdown', () => {
             this.sound.play('snare1');
+            sample_btn3.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn3.setScale(1);
+            });
         });
 
         sample_btn4.on('pointerdown', () => {
             this.sound.play('snare2');
+            sample_btn4.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn4.setScale(1);
+            });
         });
 
         sample_btn5.on('pointerdown', () => {
             this.sound.play('kick3');
+            sample_btn5.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn5.setScale(1);
+            });
         });
 
         sample_btn6.on('pointerdown', () => {
             this.sound.play('kick4');
+            sample_btn6.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn6.setScale(1);
+            });
         });
 
         sample_btn7.on('pointerdown', () => {
             this.sound.play('hihat1');
+            sample_btn7.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn7.setScale(1);
+            });
         }); 
 
         sample_btn8.on('pointerdown', () => {   
             this.sound.play('hihat2');
+            sample_btn8.setScale(0.95);
+            this.time.delayedCall(100, () => {
+                sample_btn8.setScale(1);
+            });
         });
 
         let song = this.sound.add(`song${this.generateRandomInt(1,3)}`);
