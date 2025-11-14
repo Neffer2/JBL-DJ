@@ -9,11 +9,11 @@ export class Game extends Phaser.Scene {
         let width = this.scale.width;
 
         let sample_btn1 = this.add.image(320, 365, 'sample_btn1').setInteractive();
-        let sample_btn2 = this.add.image(sample_btn1.x + 150, 365, 'sample_btn2').setInteractive();
-        let sample_btn3 = this.add.image(sample_btn2.x + 150, 365, 'sample_btn3').setInteractive();
-        let sample_btn4 = this.add.image(sample_btn3.x + 150, 365, 'sample_btn4').setInteractive();
+        let sample_btn2 = this.add.image(sample_btn1.x + 150, 365, 'sample_btn3').setInteractive();
+        let sample_btn3 = this.add.image(sample_btn2.x + 150, 365, 'sample_btn2').setInteractive();
+        let sample_btn4 = this.add.image(sample_btn3.x + 150, 365, 'sample_btn1').setInteractive();
 
-        let sample_btn5 = this.add.image(sample_btn1.x, sample_btn1.y + 180, 'sample_btn1').setInteractive();
+        let sample_btn5 = this.add.image(sample_btn1.x, sample_btn1.y + 180, 'sample_btn4').setInteractive();
         let sample_btn6 = this.add.image(sample_btn5.x + 150, sample_btn5.y, 'sample_btn2').setInteractive();
         let sample_btn7 = this.add.image(sample_btn6.x + 150, sample_btn6.y, 'sample_btn3').setInteractive();
         let sample_btn8 = this.add.image(sample_btn7.x + 150, sample_btn7.y, 'sample_btn4').setInteractive();
@@ -25,6 +25,36 @@ export class Game extends Phaser.Scene {
             repeat: -1
         });
         this.add.image((width / 2), 145.5, 'logo').setOrigin(0.5);
+        this.add.image(140, 430, 'volume').setOrigin(0.5);
+        let volumeBtn = this.add.image(149, 430, 'volume_btn').setScale(0.6).setOrigin(0.5).setInteractive();
+        
+        // Configuración del control de volumen
+        let volumeBar = {
+            minY: 280, // Posición superior (volumen máximo)
+            maxY: 600, // Posición inferior (volumen mínimo)
+            currentVolume: 0.8 // Volumen inicial
+        };
+        
+        // Posicionar el botón según el volumen inicial
+        volumeBtn.y = volumeBar.minY + (1 - volumeBar.currentVolume) * (volumeBar.maxY - volumeBar.minY);
+        
+        // Hacer el botón draggable solo en el eje Y
+        this.input.setDraggable(volumeBtn);
+        
+        volumeBtn.on('drag', (pointer, dragX, dragY) => {
+            // Limitar el movimiento solo al eje Y dentro del rango permitido
+            let newY = Phaser.Math.Clamp(dragY, volumeBar.minY, volumeBar.maxY);
+            volumeBtn.y = newY;
+            
+            // Calcular el volumen basado en la posición (invertido: arriba = más volumen)
+            let volumePercent = 1 - ((newY - volumeBar.minY) / (volumeBar.maxY - volumeBar.minY));
+            volumeBar.currentVolume = volumePercent;
+            
+            // Aplicar el volumen a la canción
+            if (song) {
+                song.setVolume(volumeBar.currentVolume);
+            }
+        });
 
         sample_btn1.on('pointerdown', () => {
             this.sound.play('kick1');
