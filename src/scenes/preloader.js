@@ -7,7 +7,15 @@ export class Preloader extends Phaser.Scene {
     preload ()
     { 
         this.load.setPath('public/assets');
-        
+        // OBJECTS  
+        this.load.image('background', 'objects/bg.jpg');
+        this.load.image('background', 'objects/bg.jpg');
+        this.load.image('sample_btn4', 'objects/sample_btn4.png');
+        this.load.image('sample_btn1', 'objects/sample_btn1.png');
+        this.load.image('sample_btn2', 'objects/sample_btn2.png');
+        this.load.image('sample_btn3', 'objects/sample_btn3.png');
+        this.load.image('scrath_btn', 'objects/scrath.png');
+        this.load.spritesheet('sine', 'objects/sine.png', { frameWidth: 601, frameHeight: 128 } );
 
         // Samples
         this.load.audio('hihat1', ['samples/Hihat1.wav']);
@@ -24,7 +32,7 @@ export class Preloader extends Phaser.Scene {
         this.load.audio('song1', ['songs/Lensko - Circles.mp3']);
 
         // OBJECTS
-        this.load.image('detune', 'characters/enemy_1.png');
+        this.load.image('spin_volume', 'objects/detune.png');
 
         // PLUGINS
         this.load.plugin('rexdragrotateplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexdragrotateplugin.min.js', true);

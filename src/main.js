@@ -23,7 +23,7 @@ const config = {
         }
     },
     input :{
-		activePointers: 3,
+		activePointers: 5,
     },
     backgroundColor: '#000'
 };
