@@ -15,6 +15,7 @@ export class Preloader extends Phaser.Scene {
         this.load.image('sample_btn2', 'objects/sample_btn2.png');
         this.load.image('sample_btn3', 'objects/sample_btn3.png');
         this.load.image('scrath_btn', 'objects/scrath.png');
+        this.load.image('logo', 'objects/logo.png');
         this.load.spritesheet('sine', 'objects/sine.png', { frameWidth: 601, frameHeight: 128 } );
 
         // Samples

@@ -24,6 +24,7 @@ export class Game extends Phaser.Scene {
             frameRate: 5,
             repeat: -1
         });
+        this.add.image((width / 2), 145.5, 'logo').setOrigin(0.5);
 
         sample_btn1.on('pointerdown', () => {
             this.sound.play('kick1');
@@ -113,7 +114,7 @@ export class Game extends Phaser.Scene {
             });
         });        
 
-        let detune = this.add.image(208, 145, 'spin_volume').setInteractive();
+        let detune = this.add.image(212, 142, 'spin_volume').setInteractive();
         this.plugins.get('rexdragrotateplugin').add(this, {
             origin: detune,
             x: 0,
@@ -138,7 +139,7 @@ export class Game extends Phaser.Scene {
             
         });
 
-        let rate = this.add.image(1075, 145, 'spin_volume').setInteractive();
+        let rate = this.add.image(1078, 142, 'spin_volume').setInteractive();
         this.plugins.get('rexdragrotateplugin').add(this, {
             origin: rate,
             x: 0,
